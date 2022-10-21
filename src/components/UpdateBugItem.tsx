@@ -9,7 +9,6 @@ function UpdateBugItem({ bug, onToggleFixed }: Props) {
   return (
     <div>
       <button onClick={onToggleFixed}>
-        {bug.description}
         Mark {bug.fixed ? "Not Fixed" : "Fixed"}
       </button>
     </div>

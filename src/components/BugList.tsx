@@ -44,34 +44,31 @@ export function BugList() {
 
   return (
     <>
-      <h1 style={{ color: "slateblue" }}>Bugs</h1>
-      <table
-        style={{
-          border: "1px solid black",
-          padding: "10px",
-        }}
-      >
-        <tbody>
-          <tr>
-            <th>Description</th>
-            <th>Fixed</th>
-            <th>Actions</th>
-          </tr>
-          {bugs.map((bug, i) => (
-            <tr key={i}>
-              <td>{bug.description}</td>
-              <td>{bug.fixed === true ? "Yes" : "No"}</td>
-              <td>
-                <BugItem
-                  onDelete={() => handleDelete(i)}
-                  bug={bug}
-                  onToggleFixed={() => handleToggleFixed(i)}
-                ></BugItem>
-              </td>
+      <h1 style={{ color: "slateblue", textAlign: "center" }}>Bugs List</h1>
+      <div className="table-container">
+        <table>
+          <tbody>
+            <tr>
+              <th>Description</th>
+              <th>Fixed</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+            {bugs.map((bug, i) => (
+              <tr key={i} className="bug-list">
+                <td>{bug.description}</td>
+                <td>{bug.fixed === true ? "Yes" : "No"}</td>
+                <td>
+                  <BugItem
+                    onDelete={() => handleDelete(i)}
+                    bug={bug}
+                    onToggleFixed={() => handleToggleFixed(i)}
+                  ></BugItem>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <div className="bugForm">
         <AddBugForm onSubmit={handleAdd} />

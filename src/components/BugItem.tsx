@@ -10,7 +10,10 @@ interface Props {
 function BugItem({ bug, onDelete, onToggleFixed }: Props) {
   return (
     <>
-      <button onClick={onToggleFixed}>
+      <button
+        className={bug.fixed ? "lineThrough" : "notLineThrough"}
+        onClick={onToggleFixed}
+      >
         Mark {bug.fixed ? "Not Fixed" : "Fixed"}
       </button>
       <button style={{ marginLeft: "10px" }} onClick={onDelete}>
