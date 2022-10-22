@@ -15,12 +15,13 @@ export const AddBugForm = ({ onSubmit }: Props) => {
 
   return (
     <>
-      <h2 className="addBug">Add a bug</h2>
+      <h2 className="addBug">Form: Add a bug</h2>
       <form onSubmit={handleInput} className="form-container">
         <div className="input-label">
           <label className="label"> Description </label>
           <input
             type="text"
+            placeholder="enter bug description"
             name={description}
             id="description"
             onChange={(e) => setDescriptipon(e.target.value)}
@@ -32,7 +33,9 @@ export const AddBugForm = ({ onSubmit }: Props) => {
             checked={active}
             onChange={() => setActive(!active)}
           />
-          <label style={{ marginLeft: "10px" }}>Fixed</label>
+          <label className="fixedCheck" style={{ marginLeft: "10px" }}>
+            Fixed
+          </label>
         </div>
 
         <button className="btnSave" onClick={() => handleInput}>

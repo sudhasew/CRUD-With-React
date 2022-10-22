@@ -64,7 +64,7 @@ export function BugList() {
             {bugs.map((bug, i) => (
               <tr key={i} className="bug-list">
                 <td>{bug.description}</td>
-                <td>{bug.fixed === true ? "Yes" : "No"}</td>
+                <td className="fixed">{bug.fixed === true ? "Yes" : "No"}</td>
                 <td>
                   <BugItem
                     onDelete={() => handleDelete(i)}

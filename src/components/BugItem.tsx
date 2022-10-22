@@ -13,9 +13,9 @@ function BugItem({ bug, onDelete, onToggleFixed }: Props) {
         className={bug.fixed ? "lineThrough" : "notLineThrough"}
         onClick={onToggleFixed}
       >
-        Mark {bug.fixed ? "Not Fixed" : "Fixed"}
+        Mark {bug.fixed ? "!Fixed" : "Fixed"}
       </button>
-      <button style={{ marginLeft: "10px" }} onClick={onDelete}>
+      <button className="delBtn" onClick={onDelete}>
         Delete
       </button>
     </>
