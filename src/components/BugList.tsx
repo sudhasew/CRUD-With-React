@@ -44,7 +44,15 @@ export function BugList() {
 
   return (
     <>
-      <h1 style={{ color: "slateblue", textAlign: "center" }}>Bugs List</h1>
+      <h1
+        style={{
+          color: "slateblue",
+          textAlign: "center",
+          marginBottom: "10px",
+        }}
+      >
+        Bugs List
+      </h1>
       <div className="table-container">
         <table>
           <tbody>
@@ -70,9 +78,7 @@ export function BugList() {
         </table>
       </div>
 
-      <div className="bugForm">
-        <AddBugForm onSubmit={handleAdd} />
-      </div>
+      <AddBugForm onSubmit={handleAdd} />
     </>
   );
 }

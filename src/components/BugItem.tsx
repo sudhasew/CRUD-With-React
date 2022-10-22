@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Bug from "../services/Bug";
 
 interface Props {

@@ -61,6 +61,7 @@ label {
 }
 
 .addBug {
+  text-align: center;
   color: slateblue;
   margin: 10px 0;
   font-size: 2rem;
@@ -88,7 +89,7 @@ td {
   margin: 20px 10px;
 }
 
-.bugForm {
+.form-container {
   border: 1px solid black;
   margin-top: 20px;
   padding: 10px;
