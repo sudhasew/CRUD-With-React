@@ -20,7 +20,6 @@ export function BugList() {
   ]);
 
   function handleAdd(bug: Bug) {
-    console.log("bugs here are", bug);
     setBugs((prevBugs) => [...prevBugs, bug]);
   }
 
@@ -55,26 +54,40 @@ export function BugList() {
       </h1>
       <div className="table-container">
         <table>
-          <tbody>
+          <thead>
             <tr>
               <th>Description</th>
               <th>Fixed</th>
               <th>Actions</th>
             </tr>
-            {bugs.map((bug, i) => (
-              <tr key={i} className="bug-list">
-                <td>{bug.description}</td>
-                <td className="fixed">{bug.fixed === true ? "Yes" : "No"}</td>
-                <td>
-                  <BugItem
-                    onDelete={() => handleDelete(i)}
-                    bug={bug}
-                    onToggleFixed={() => handleToggleFixed(i)}
-                  ></BugItem>
-                </td>
+          </thead>
+          {bugs.length > 0 ? (
+            bugs.map((bug, i) => {
+              return (
+                <tbody key={i}>
+                  <tr key={i} className="bug-list">
+                    <td>{bug.description}</td>
+                    <td className="fixed">
+                      {bug.fixed === true ? "Yes" : "No"}
+                    </td>
+                    <td>
+                      <BugItem
+                        onDelete={() => handleDelete(i)}
+                        bug={bug}
+                        onToggleFixed={() => handleToggleFixed(i)}
+                      ></BugItem>
+                    </td>
+                  </tr>
+                </tbody>
+              );
+            })
+          ) : (
+            <tbody className="no-results">
+              <tr className="bug-msg">
+                <td>No results found</td>
               </tr>
-            ))}
-          </tbody>
+            </tbody>
+          )}
         </table>
       </div>
 
