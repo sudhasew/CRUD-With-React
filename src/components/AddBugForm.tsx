@@ -34,8 +34,7 @@ export const AddBugForm = ({
             ref={inputRef}
             type="input"
             placeholder="enter bug description"
-            name={bug.toUpperCase()}
-            className="description"
+            id="description"
             onChange={(e) => setBug(e.target.value)}
             value={bug}
           />

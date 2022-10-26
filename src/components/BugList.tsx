@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Bug from "../services/Bug";
 import { AddBugForm } from "./AddBugForm";
@@ -9,7 +9,6 @@ export function BugList() {
   const [bugs, setBugs] = useState<Bug[]>([]);
   const [bug, setBug] = useState("");
   const [active, setActive] = useState(false);
-
   const notify = () =>
     toast.info(`You added "${bug}" to bug list!`, {
       className: "notifyInfo",
@@ -23,20 +22,23 @@ export function BugList() {
       theme: "light",
     });
 
+  let addClass = " line-through";
+  let notAddClass = "";
   function handleAdd(e: FormEvent) {
     e.preventDefault();
     if (bug) {
+      addClass = "line-through";
       setBugs([
         ...bugs,
         {
-          description: bug,
+          description: bug.toUpperCase(),
           fixed: active,
         },
       ]);
       setBug("");
     }
 
-    if (bug == "") {
+    if (bug === "") {
       toast.error("Please add a valid bug", {
         className: "notify",
         position: "top-center",
@@ -100,16 +102,10 @@ export function BugList() {
               return (
                 <tbody key={i}>
                   <tr className="bug-list">
-                    <td
-                      className={
-                        bug.description ? "notLine-through" : "line-through"
-                      }
-                    >
+                    <td className={bug.fixed ? addClass : "desc"}>
                       {bug.description}
                     </td>
-                    <td className="fixed">
-                      {bug.fixed === true ? "Yes" : "No"}
-                    </td>
+                    <td className={"fixed"}>{bug.fixed ? "Yes" : "No"}</td>
                     <td>
                       <BugItem
                         onDelete={() => handleDelete(i)}
