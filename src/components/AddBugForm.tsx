@@ -1,55 +1,45 @@
-import { FormEvent, useState } from "react";
-import Bug from "../services/Bug";
+import { FormEvent, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
-  onSubmit: (bug: Bug) => void;
+  bug: string;
+  setBug: React.Dispatch<React.SetStateAction<string>>;
+  handleAdd: (e: FormEvent) => void;
+  active: boolean;
+  handleCheck: () => void;
 }
 
-export const AddBugForm = ({ onSubmit }: Props) => {
-  const [active, setActive] = useState(false);
-  const [description, setDescriptipon] = useState("");
-
-  const notify = () =>
-    toast.info(`You added "${description.toUpperCase()}" to bug list!`, {
-      className: "notifyInfo",
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-  function handleInput(e: FormEvent) {
-    onSubmit({ description: description, fixed: active });
-    e.preventDefault();
-    notify();
-  }
-
-  const handleCheck = () => {
-    setActive(!active);
-  };
+export const AddBugForm = ({
+  bug,
+  setBug,
+  handleAdd,
+  active,
+  handleCheck,
+}: Props) => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <>
       <h2 className="addBug">Form: Add a bug</h2>
-      <form onSubmit={handleInput} className="form-container">
+      <form
+        onSubmit={(e) => {
+          handleAdd(e);
+          inputRef.current?.blur();
+        }}
+        className="form-container"
+      >
         <div className="desc-container">
           <label className="label"> Description </label>
           <input
-            type="text"
+            ref={inputRef}
+            type="input"
             placeholder="enter bug description"
-            name={description.toUpperCase()}
-            id="description"
-            onChange={(e) => setDescriptipon(e.target.value)}
+            name={bug.toUpperCase()}
+            className="description"
+            onChange={(e) => setBug(e.target.value)}
+            value={bug}
           />
-          <button className="btnSave" onClick={() => handleInput}>
-            Save
-          </button>
+          <button className="btnSave">Save</button>
           <ToastContainer />
         </div>
         <input

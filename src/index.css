@@ -16,9 +16,9 @@ html {
 }
 
 .App {
-  background-color: white;
+  background-color: slateblue;
   border-radius: 10px;
-  border: 2px solid slateblue;
+  border: 2px solid white;
   color: white;
   font-size: 20px;
   padding: 10px;
@@ -39,24 +39,8 @@ label {
   border-radius: 5px;
   border: 1px solid black;
   padding: 7px;
-  margin: 15px 30px;
-  height: 250px;
   overflow: scroll;
   background-color: slateblue;
-}
-
-.lineThrough {
-  text-decoration: line-through;
-  width: 100px;
-  padding: 7px 5px;
-  font-size: 15px;
-}
-
-.notLineThrough {
-  text-decoration: none;
-  width: 100px;
-  padding: 7px 5px;
-  font-size: 15px;
 }
 
 .check {
@@ -68,37 +52,58 @@ label {
 
 .addBug {
   text-align: center;
-  color: slateblue;
+  color: white;
   margin: 10px 0;
   font-size: 2rem;
 }
 
 table {
   border-spacing: 0;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+table td {
+  padding: 3px;
 }
 
 th {
+  width: 100%;
   font-size: 1.5rem;
-  color: white;
-  border-bottom: 2px solid white;
-  padding: 17px 18px;
-  margin: 0 20px;
+  color: slateblue;
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  border: 1px solid slateblue;
 }
 
 .bug-list td {
+  width: 100%;
   padding: 7px;
   border-bottom: 1px solid white;
-  margin: 0;
+  background-color: slateblue;
+  color: white;
+}
+
+td.desc {
+  text-align: center;
 }
 
 td.fixed {
   margin: 0 20px;
-  padding: 10px 15px;
+  text-align: center;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.notLine-through {
+  text-decoration: none;
 }
 
 .form-container {
   border: 1px solid black;
-  margin: 10px 5px 5px 5px;
   padding: 10px;
   border-radius: 5px;
   background-color: slateblue;
@@ -111,14 +116,20 @@ td.fixed {
   width: 90%;
 }
 
-#description {
+.description {
   width: 100%;
   border-radius: 30px;
   padding: 20px;
-  margin-left: 10px;
-  outline: none;
+  margin: 15px 0 15px 15px;
   font-size: 20px;
   border: 1px solid black;
+  transition: 0.2s;
+  box-shadow: inset 0 0 5px slateblue;
+}
+
+.description:focus {
+  box-shadow: 0 0 5px 15px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
 ::placeholder {
@@ -138,38 +149,58 @@ td.fixed {
   font-size: 17px;
   border-radius: 30px;
   border: 1px solid black;
-  opacity: 0.8;
+  transition: 0.2s all;
+  box-shadow: 0 0 10px rgb(80, 56, 240);
 }
 
 .btnSave:hover {
-  opacity: 1;
+  background-color: rgb(40, 29, 111);
   color: white;
   border: 1px solid slateblue;
 }
 
 .btnSave:active {
   transform: scale(0.9);
-  box-shadow: 0 0 5px slateblue;
+  box-shadow: 0 0 5px rgb(2, 0, 15);
 }
 
 .notifyInfo,
 .notifyWarn {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 button {
   cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid black;
+  border: none;
+}
+
+.bugItem-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkMark {
+  background: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.faCheck,
+.faXmark {
+  width: 20px;
 }
 
 .delBtn {
-  margin-left: 15px;
+  margin-left: 20px;
   padding: 7px 5px;
+  background: none;
+  color: white;
+  font-size: 1.2rem;
 }
 
 .bug-msg td {
-  padding: 30px;
+  padding: 12px;
   font-size: 1.5rem;
 }
 
@@ -197,29 +228,29 @@ button {
   }
 
   th {
-    color: white;
-    border-bottom: 1px solid black;
     margin: 0 20px;
     font-size: 1.2rem;
     padding: 12px 15px;
+  }
+
+  table {
+    width: 100%;
+    padding: 7px;
   }
 
   td {
     padding: 7px;
   }
 
-  .table-container {
-    height: 200px;
+  .bugItem-container {
+    text-align: center;
+    margin-left: 20px;
   }
 
-  .lineThrough {
-    width: 80px;
-    font-size: 13px;
-  }
-
-  .notLineThrough {
-    width: 80px;
-    font-size: 13px;
+  .checkMark {
+    background: none;
+    color: white;
+    font-size: 1rem;
   }
 
   ::placeholder {
@@ -231,8 +262,8 @@ button {
   }
 
   .check {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     margin-top: 15px;
     margin-left: 7px;
   }
@@ -246,7 +277,7 @@ button {
     font-size: 1.2rem;
   }
 
-  #description {
+  .description {
     width: 100%;
     padding: 12px;
     margin-left: 10px;
@@ -263,10 +294,11 @@ button {
     font-size: 12px;
   }
 
-  .delBtn {
-    margin-left: 7px;
-    padding: 5px;
-    font-size: 13px;
+  .bugItem-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
   }
 
   .bug-msg td {
@@ -297,31 +329,17 @@ button {
     font-size: 1.3rem;
   }
 
-  th tr {
-    width: 400px;
+  .table-container {
+    height: 90px;
+  }
+
+  th {
     font-size: 15px;
-    padding: 8px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    margin: 0 5px;
   }
 
   .bug-list td {
-    padding: 5px;
+    padding: 3px;
     font-size: 13px;
-  }
-
-  .table-container {
-    height: 170px;
-  }
-
-  .lineThrough,
-  .notLineThrough {
-    width: 60px;
-    font-size: 10px;
-    padding: 4px 2px;
   }
 
   ::placeholder {
@@ -348,7 +366,7 @@ button {
     font-size: 1rem;
   }
 
-  #description {
+  .description {
     width: 100%;
     padding: 8px;
     margin-left: 8px;
@@ -371,7 +389,7 @@ button {
   }
 
   .bug-msg td {
-    padding: 30px;
+    padding: 10px;
     font-size: 15px;
   }
 }
@@ -409,14 +427,7 @@ button {
   }
 
   .table-container {
-    height: 120px;
-  }
-
-  .lineThrough,
-  .notLineThrough {
-    width: 50px;
-    font-size: 8px;
-    padding: 3px 1px;
+    height: 70px;
   }
 
   ::placeholder {
@@ -466,7 +477,7 @@ button {
   }
 
   .bug-msg td {
-    padding: 20px;
+    padding: 5px;
     font-size: 10px;
   }
 }

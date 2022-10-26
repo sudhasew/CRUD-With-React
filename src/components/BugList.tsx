@@ -1,27 +1,61 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Bug from "../services/Bug";
 import { AddBugForm } from "./AddBugForm";
 import BugItem from "./BugItem";
 
 export function BugList() {
-  const [bugs, setBugs] = useState<Bug[]>([
-    {
-      description: "CSS overlap",
-      fixed: false,
-    },
-    {
-      description: "Rounded Corners",
-      fixed: false,
-    },
-    {
-      description: "Crashes when lose",
-      fixed: true,
-    },
-  ]);
+  const [bugs, setBugs] = useState<Bug[]>([]);
+  const [bug, setBug] = useState("");
+  const [active, setActive] = useState(false);
 
-  function handleAdd(bug: Bug) {
-    setBugs((prevBugs) => [...prevBugs, bug]);
+  const notify = () =>
+    toast.info(`You added "${bug}" to bug list!`, {
+      className: "notifyInfo",
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  function handleAdd(e: FormEvent) {
+    e.preventDefault();
+    if (bug) {
+      setBugs([
+        ...bugs,
+        {
+          description: bug,
+          fixed: active,
+        },
+      ]);
+      setBug("");
+    }
+
+    if (bug == "") {
+      toast.error("Please add a valid bug", {
+        className: "notify",
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
+    notify();
   }
+
+  const handleCheck = () => {
+    setActive(!active);
+  };
 
   function handleDelete(i: number) {
     setBugs((prevBugs) => [
@@ -45,7 +79,7 @@ export function BugList() {
     <>
       <h1
         style={{
-          color: "slateblue",
+          color: "white",
           textAlign: "center",
           marginBottom: "10px",
         }}
@@ -65,8 +99,14 @@ export function BugList() {
             bugs.map((bug, i) => {
               return (
                 <tbody key={i}>
-                  <tr key={i} className="bug-list">
-                    <td>{bug.description}</td>
+                  <tr className="bug-list">
+                    <td
+                      className={
+                        bug.description ? "notLine-through" : "line-through"
+                      }
+                    >
+                      {bug.description}
+                    </td>
                     <td className="fixed">
                       {bug.fixed === true ? "Yes" : "No"}
                     </td>
@@ -84,14 +124,20 @@ export function BugList() {
           ) : (
             <tbody className="no-results">
               <tr className="bug-msg">
-                <td>No results found</td>
+                <td>Add a bug</td>
               </tr>
             </tbody>
           )}
         </table>
       </div>
 
-      <AddBugForm onSubmit={handleAdd} />
+      <AddBugForm
+        bug={bug}
+        setBug={setBug}
+        handleAdd={handleAdd}
+        active={active}
+        handleCheck={handleCheck}
+      />
     </>
   );
 }

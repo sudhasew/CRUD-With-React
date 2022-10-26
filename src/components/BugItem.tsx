@@ -1,6 +1,8 @@
 import Bug from "../services/Bug";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   bug: Bug;
@@ -10,7 +12,7 @@ interface Props {
 
 function BugItem({ bug, onDelete, onToggleFixed }: Props) {
   const notify = () =>
-    toast.warn(`You have deleted "${bug.description.toUpperCase()}"`, {
+    toast.warn(`You have deleted "${bug.description}"`, {
       position: "top-right",
       className: "notifyWarn",
       autoClose: 3000,
@@ -28,18 +30,19 @@ function BugItem({ bug, onDelete, onToggleFixed }: Props) {
   };
 
   return (
-    <>
-      <button
-        className={bug.fixed ? "lineThrough" : "notLineThrough"}
-        onClick={onToggleFixed}
-      >
-        Mark {bug.fixed ? "!Fixed" : "Fixed"}
+    <div className="bugItem-container">
+      <button className="checkMark" onClick={onToggleFixed}>
+        {bug.fixed ? (
+          <FontAwesomeIcon className="faXmark" icon={faXmark} />
+        ) : (
+          <FontAwesomeIcon className="faCheck" icon={faCheck} />
+        )}
       </button>
       <button className="delBtn" onClick={onClick}>
-        Delete
+        <FontAwesomeIcon icon={faTrash} />
       </button>
       <ToastContainer />
-    </>
+    </div>
   );
 }
 

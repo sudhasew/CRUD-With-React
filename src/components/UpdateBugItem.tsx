@@ -8,9 +8,7 @@ interface Props {
 function UpdateBugItem({ bug, onToggleFixed }: Props) {
   return (
     <div>
-      <button onClick={onToggleFixed}>
-        Mark {bug.fixed ? "Not Fixed" : "Fixed"}
-      </button>
+      <button onClick={onToggleFixed}></button>
     </div>
   );
 }
