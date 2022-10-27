@@ -9,29 +9,58 @@ export function BugList() {
   const [bugs, setBugs] = useState<Bug[]>([]);
   const [bug, setBug] = useState("");
   const [active, setActive] = useState(false);
-  const notify = () =>
-    toast.info(`You added "${bug}" to bug list!`, {
-      className: "notifyInfo",
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
 
   function handleAdd(e: FormEvent) {
     e.preventDefault();
+
     if (bug) {
-      setBugs([
-        ...bugs,
-        {
-          description: bug.toUpperCase(),
-          fixed: active,
-        },
-      ]);
+      if (bugs.find((b) => b.description === bug.toUpperCase())) {
+        if (window.confirm(`Do you want to add ${bug} again`)) {
+          setBugs([
+            ...bugs,
+            {
+              description: bug.toUpperCase(),
+              fixed: active,
+            },
+          ]);
+
+          toast.info(`Again You added "${bug}" to bug list!`, {
+            className: "notifyInfo",
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setBug("");
+        } else {
+          setBug("");
+          return;
+        }
+      } else {
+        setBugs([
+          ...bugs,
+          {
+            description: bug.toUpperCase(),
+            fixed: active,
+          },
+        ]);
+
+        toast.info(`You added "${bug}" to bug list!`, {
+          className: "notifyInfo",
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
       setBug("");
     }
 
@@ -49,7 +78,6 @@ export function BugList() {
       });
       return;
     }
-    notify();
   }
 
   const handleCheck = () => {

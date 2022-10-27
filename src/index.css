@@ -285,6 +285,10 @@ button {
     border: 1px solid black;
   }
 
+  ::placeholder {
+    font-size: 15px;
+  }
+
   .btnSave {
     width: 45px;
     height: 35px;
