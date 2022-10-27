@@ -22,12 +22,9 @@ export function BugList() {
       theme: "light",
     });
 
-  let addClass = " line-through";
-  let notAddClass = "";
   function handleAdd(e: FormEvent) {
     e.preventDefault();
     if (bug) {
-      addClass = "line-through";
       setBugs([
         ...bugs,
         {
@@ -102,7 +99,7 @@ export function BugList() {
               return (
                 <tbody key={i}>
                   <tr className="bug-list">
-                    <td className={bug.fixed ? addClass : "desc"}>
+                    <td className={bug.fixed ? "line-through" : "desc"}>
                       {bug.description}
                     </td>
                     <td className={"fixed"}>{bug.fixed ? "Yes" : "No"}</td>
