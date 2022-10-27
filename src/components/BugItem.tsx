@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
-
+import { AiFillEdit } from "react-icons/ai";
 interface Props {
   bug: Bug;
   onDelete: () => void;
@@ -31,6 +31,9 @@ function BugItem({ bug, onDelete, onToggleFixed }: Props) {
 
   return (
     <div className="bugItem-container">
+      <button className="edit">
+        <AiFillEdit />
+      </button>
       <button className="checkMark" onClick={onToggleFixed}>
         {bug.fixed ? (
           <FontAwesomeIcon className="faXmark" icon={faXmark} />

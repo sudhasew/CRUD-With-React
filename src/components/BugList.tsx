@@ -23,7 +23,6 @@ export function BugList() {
               fixed: active,
             },
           ]);
-
           toast.info(`Again You added "${bug}" to bug list!`, {
             className: "notifyInfo",
             position: "top-right",
@@ -116,7 +115,7 @@ export function BugList() {
       <div className="table-container">
         <table>
           <thead>
-            <tr>
+            <tr className="table-header">
               <th>Description</th>
               <th>Fixed</th>
               <th>Actions</th>

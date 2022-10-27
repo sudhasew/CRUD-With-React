@@ -64,19 +64,19 @@ table {
 
 table td {
   width: 100%;
-  padding: 3px;
+  /* padding: 3px; */
 }
 
 th {
   font-size: 1.5rem;
   color: slateblue;
-  padding: 10px;
-  text-align: center;
+  padding: 7px;
   background-color: white;
   border: 1px solid slateblue;
 }
 
 .bug-list td {
+  text-align: center;
   border-bottom: 1px solid white;
   background-color: slateblue;
   color: white;
@@ -84,11 +84,13 @@ th {
 
 td.desc {
   text-align: center;
+  font-size: 1.5rem;
+  padding: 7px;
 }
 
 td.fixed {
-  margin: 0 20px;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .form-container {
@@ -167,36 +169,51 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 7px 10px;
+  font-size: 1.5rem;
 }
 
 .checkMark {
   background: none;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .faCheck,
 .faXmark {
-  width: 20px;
+  background: none;
+  color: white;
+  width: 30px;
+  font-size: 1.5rem;
+}
+
+.edit {
+  background: none;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .delBtn {
-  margin-left: 20px;
-  padding: 7px 5px;
   background: none;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+}
+
+.no-results {
+  width: 100%;
+  font-size: 1.5rem;
 }
 
 .bug-msg td {
-  padding: 10px;
-  font-size: 1.5rem;
+  padding: 10px 7px;
   text-align: center;
+  width: 100%;
 }
 
 .line-through {
   text-decoration: line-through;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -238,10 +255,6 @@ button {
 
   td.fixed {
     margin: 0 20px;
-    text-align: center;
-  }
-
-  .bugItem-container {
     text-align: center;
   }
 
