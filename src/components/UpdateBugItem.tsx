@@ -5,7 +5,7 @@ interface Props {
   onToggleFixed: () => void;
 }
 
-function UpdateBugItem({ bug, onToggleFixed }: Props) {
+function UpdateBugItem({ onToggleFixed }: Props) {
   return (
     <div>
       <button onClick={onToggleFixed}></button>

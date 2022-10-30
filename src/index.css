@@ -64,7 +64,6 @@ table {
 
 table td {
   width: 100%;
-  /* padding: 3px; */
 }
 
 th {
@@ -89,6 +88,7 @@ td.desc {
 }
 
 td.fixed {
+  width: 40px;
   text-align: center;
   font-size: 1.5rem;
 }
@@ -165,10 +165,21 @@ button {
   border: none;
 }
 
-.bugItem-container {
+.icons {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+  padding: 5px;
+}
+
+.bugItem-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 7px 10px;
   font-size: 1.5rem;
 }
@@ -180,40 +191,45 @@ button {
 }
 
 .faCheck,
-.faXmark {
-  background: none;
-  color: white;
-  width: 30px;
-  font-size: 1.5rem;
-}
-
+.faXmark,
+.delBtn,
 .edit {
-  background: none;
-  color: white;
-  font-size: 1.5rem;
+  padding: 5px;
+  cursor: pointer;
 }
 
-.delBtn {
-  background: none;
-  color: white;
-  font-size: 1.5rem;
+.todos__single--text {
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
 }
 
-.no-results {
-  width: 100%;
-  font-size: 1.5rem;
+.todos__single--text:focus {
+  outline: none;
 }
 
-.bug-msg td {
-  padding: 10px 7px;
+.edit-input {
+  padding: 5px;
+}
+
+.bug-msg {
+  font-size: 1.5rem;
+  padding: 5px;
   text-align: center;
-  width: 100%;
 }
 
 .line-through {
   text-decoration: line-through;
   text-align: center;
   font-size: 1.5rem;
+}
+
+.editableRow input,
+.isFixed input {
+  margin: 0 5px;
+  padding: 5px 7px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -344,8 +360,12 @@ button {
   }
 
   .bug-list td {
-    font-size: 13px;
-    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 47.5%;
+    padding: 15px;
+    background-color: rgb(50, 195, 205);
   }
 
   .addBug {

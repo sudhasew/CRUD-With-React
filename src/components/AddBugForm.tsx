@@ -1,5 +1,5 @@
-import { FormEvent, useRef, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { FormEvent, useRef } from "react";
+import { ToastContainer } from "react-toastify";
 
 interface Props {
   bug: string;
@@ -31,12 +31,12 @@ export const AddBugForm = ({
         <div className="desc-container">
           <label className="label"> Description </label>
           <input
-            ref={inputRef}
-            type="input"
+            type="text"
             placeholder="enter bug description"
-            id="description"
-            onChange={(e) => setBug(e.target.value)}
             value={bug}
+            ref={inputRef}
+            onChange={(e) => setBug(e.target.value)}
+            id="description"
           />
           <button className="btnSave">Save</button>
           <ToastContainer />

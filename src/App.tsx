@@ -1,4 +1,3 @@
-import { FormEvent, useState } from "react";
 import "./App.css";
 import { BugList } from "./components/BugList";
 
