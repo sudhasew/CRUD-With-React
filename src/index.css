@@ -1,168 +1,107 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.crudHeading {
-  text-align: center;
-  color: slateblue;
-}
-
-html {
-  border: 2px solid slateblue;
-  max-width: 600px;
-  background-color: rgb(208, 202, 247);
-  margin: 60px auto;
-  border-radius: 7px;
-}
-
-.App {
-  background-color: slateblue;
-  border-radius: 10px;
-  border: 2px solid white;
-  color: white;
-  padding: 10px;
-  margin: 20px 10px;
-}
-
-h2 {
-  margin-left: 22px;
-}
-
-.label,
-label {
-  font-size: 1.5rem;
-  margin-left: 10px;
-}
-
-.table-container {
-  border-radius: 5px;
-  border: 1px solid black;
-  padding: 7px;
-  overflow: scroll;
-  background-color: slateblue;
-}
-
-.check {
-  margin: 20px 10px 10px;
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-}
-
-.addBug {
-  text-align: center;
-  color: white;
-  margin: 10px 0;
-  font-size: 2rem;
-}
-
-table {
-  border-spacing: 0;
-  padding: 5px;
-  margin: 0 auto;
-}
-
-table td {
-  width: 100%;
-}
-
-th {
-  font-size: 1.5rem;
-  color: slateblue;
-  padding: 7px;
-  background-color: white;
-  border: 1px solid slateblue;
-}
-
-.bug-list td {
-  text-align: center;
-  border-bottom: 1px solid white;
-  background-color: slateblue;
-  color: white;
-}
-
-td.desc {
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 7px;
-}
-
-td.fixed {
-  width: 40px;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.form-container {
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: slateblue;
-}
-
-.desc-container {
+.input {
+  /* display: flex;
+  align-items: center; */
+  width: 95%;
   position: relative;
-  display: flex;
-  align-items: center;
-  width: 90%;
+  margin-top: 20px;
 }
 
-#description {
+.input_container {
   width: 100%;
-  border-radius: 30px;
-  padding: 20px;
-  margin: 15px 0 15px 15px;
-  font-size: 20px;
-  border: 1px solid black;
-  transition: 0.2s;
-  box-shadow: inset 0 0 5px slateblue;
+  border-radius: 50px;
+  padding: 20px 30px;
+  font-size: 30px;
+  border: none;
+  transform: 0.2s;
+  box-shadow: inset 0 0 5px rgb(37, 28, 82);
 }
 
-#description:focus {
-  box-shadow: 0 0 5px 15px rgba(0, 0, 0, 0.5);
+.input_container:focus {
+  box-shadow: 0 0 10px 1000px rgba(22, 2, 68, 0.5);
   outline: none;
 }
 
-::placeholder {
-  font-size: 20px;
-}
-
-.btnSave {
+.saveBtn {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
+  width: 50px;
   height: 50px;
   margin: 12px;
+  border-radius: 50px;
   right: 0;
-  background-color: slateblue;
-  font-size: 17px;
-  border-radius: 30px;
-  border: 1px solid black;
-  transition: 0.2s all;
-  box-shadow: 0 0 10px rgb(80, 56, 240);
-}
-
-.btnSave:hover {
-  background-color: rgb(40, 29, 111);
-  color: white;
-  border: 1px solid slateblue;
-}
-
-.btnSave:active {
-  transform: scale(0.9);
-  box-shadow: 0 0 5px rgb(2, 0, 15);
-}
-
-.notifyInfo,
-.notifyWarn {
-  font-size: 15px;
-}
-
-button {
-  cursor: pointer;
   border: none;
+  font-size: 15px;
+  background-color: rgb(143, 131, 222);
+  color: white;
+  text-align: center;
+  transition: 0.2s all;
+  box-shadow: 0 0 10px darkblue;
+  cursor: pointer;
+}
+
+.saveBtn:hover {
+  background-color: slateblue;
+}
+
+.saveBtn:active {
+  transform: scale(0.8);
+  box-shadow: 0 0 5px darkblue;
+}
+
+.checkbox {
+  color: white;
+}
+
+.check {
+  margin: 20px 10px;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.fixedCheck {
+  margin: 20px 10px;
+  font-size: 25px;
+}
+
+.bug-msg {
+  font-size: 25px;
+  background-color: yellow;
+  padding: 20px 10px;
+  border-radius: 5px;
+}
+
+.bugsList {
+  display: flex;
+  justify-content: space-evenly;
+  width: 95%;
+  flex-wrap: wrap;
+}
+
+.bugs-single-input {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px;
+  background-color: rgb(245, 245, 7);
+  width: 29.5%;
+}
+
+.bugs-single-text,
+.line-through {
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 25px;
+  color: rgb(52, 44, 108);
+}
+
+.bugs-single-text:focus {
+  outline: none;
+}
+
+.line-through {
+  text-decoration: line-through;
 }
 
 .icons {
@@ -172,255 +111,32 @@ button {
 }
 
 .icon {
-  font-size: 1.5rem;
-  padding: 5px;
-}
-
-.bugItem-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 7px 10px;
-  font-size: 1.5rem;
-}
-
-.checkMark {
-  background: none;
-  color: white;
-  font-size: 1.5rem;
-}
-
-.faCheck,
-.faXmark,
-.delBtn,
-.edit {
-  padding: 5px;
+  margin-left: 10px;
+  font-size: 25px;
   cursor: pointer;
+  color: rgb(52, 44, 108);
 }
 
-.todos__single--text {
-  flex: 1;
-  padding: 5px;
-  border: none;
-  font-size: 20px;
+@media (max-width: 1200px) {
+  .bugs-single-input {
+    width: 55%;
+  }
 }
 
-.todos__single--text:focus {
-  outline: none;
-}
-
-.edit-input {
-  padding: 5px;
-}
-
-.bug-msg {
-  font-size: 1.5rem;
-  padding: 5px;
-  text-align: center;
-}
-
-.line-through {
-  text-decoration: line-through;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.editableRow input,
-.isFixed input {
-  margin: 0 5px;
-  padding: 5px 7px;
-  text-align: center;
-}
-
-@media only screen and (max-width: 600px) {
-  html {
-    max-width: 500px;
-    border-radius: 5px;
+@media (max-width: 700px) {
+  .input {
+    width: 95%;
   }
 
-  .App {
-    border-radius: 7px;
-    border: 1px solid slateblue;
-    font-size: 15px;
-    padding: 7px;
-    margin: 15px 7px;
+  .bugsList {
+    width: 95%;
   }
 
-  h1 {
-    font-size: 1.7rem;
-  }
-
-  .addBug {
-    margin: 7px 0;
-    font-size: 1.7rem;
-  }
-
-  table td {
+  .bugs-single-input {
     width: 100%;
-    padding: 3px;
   }
 
-  th {
-    font-size: 1.2rem;
-    padding: 7px;
-  }
-
-  td.desc {
+  .checkbox {
     text-align: center;
-  }
-
-  td.fixed {
-    margin: 0 20px;
-    text-align: center;
-  }
-
-  .checkMark {
-    background: none;
-    color: white;
-    font-size: 1rem;
-  }
-
-  ::placeholder {
-    font-size: 17px;
-  }
-
-  .input-label {
-    margin-top: 15px;
-  }
-
-  .check {
-    width: 17px;
-    height: 17px;
-    margin-top: 15px;
-    margin-left: 7px;
-  }
-
-  .label {
-    font-size: 1.2rem;
-    margin-left: 7px;
-  }
-
-  .fixedCheck {
-    font-size: 1.2rem;
-  }
-
-  #description {
-    width: 100%;
-    padding: 12px;
-    margin-left: 10px;
-    outline: none;
-    border-radius: 50px;
-    font-size: 20px;
-    border: 1px solid black;
-  }
-
-  ::placeholder {
-    font-size: 15px;
-  }
-
-  .btnSave {
-    width: 45px;
-    height: 35px;
-    margin: 7px;
-    font-size: 12px;
-  }
-
-  .bugItem-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-  }
-
-  .bug-msg td {
-    text-align: center;
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  html {
-    max-width: 440px;
-    border-radius: 4px;
-  }
-
-  .App {
-    border-radius: 5px;
-    border: 1px solid slateblue;
-    padding: 5px;
-    margin: 12px 5px;
-  }
-
-  h1 {
-    font-size: 1.3rem;
-  }
-
-  th {
-    font-size: 15px;
-  }
-
-  .bug-list td {
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    width: 47.5%;
-    padding: 15px;
-    background-color: rgb(50, 195, 205);
-  }
-
-  .addBug {
-    margin: 5px 0;
-    font-size: 1.3rem;
-  }
-
-  ::placeholder {
-    font-size: 12px;
-  }
-
-  .input-label {
-    margin-top: 12px;
-  }
-
-  .check {
-    width: 13px;
-    height: 13px;
-    margin-top: 12px;
-    margin-left: 5px;
-  }
-
-  .label {
-    font-size: 1rem;
-    margin-left: 5px;
-  }
-
-  .fixedCheck {
-    font-size: 1rem;
-  }
-
-  #description {
-    width: 100%;
-    padding: 8px;
-    margin-left: 8px;
-    border-radius: 30px;
-    font-size: 20px;
-    border: 1px solid black;
-  }
-
-  .btnSave {
-    width: 35px;
-    height: 25px;
-    margin: 8px;
-    font-size: 9px;
-  }
-
-  .delBtn {
-    margin-left: 5px;
-    padding: 4px 2px;
-    font-size: 10px;
-  }
-
-  .bug-msg td {
-    padding: 8px;
-    font-size: 13px;
   }
 }

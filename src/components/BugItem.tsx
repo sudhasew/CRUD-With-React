@@ -5,8 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 // import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdDone, MdClose } from "react-icons/md";
-
 import { useEffect, useRef, useState } from "react";
+
 interface Props {
   bug: Bug;
   bugs: Bug[];
@@ -16,6 +16,12 @@ interface Props {
 function BugItem({ bug, bugs, setBugs }: Props) {
   const [edit, setEdit] = useState<boolean>(false);
   const [editBug, setEditBug] = useState<string>(bug.description);
+
+  const handleEdit = () => {
+    if (!edit && !bug.fixed) {
+      setEdit(!edit);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent, id: number) => {
     e.preventDefault();
@@ -31,55 +37,47 @@ function BugItem({ bug, bugs, setBugs }: Props) {
     }
   };
 
-  const handleEdit = () => {
-    console.log(edit);
-    if (!edit && !bug.fixed) {
-      setEdit(!edit);
-    }
-    console.log(edit);
-  };
-
-  const handleDelete = (id: number) => {
-    if (bug.fixed) {
-      if (window.confirm(`Do you want to delete "${editBug}"`)) {
-        setBugs(bugs.filter((t) => t.id !== id));
-      }
-    } else {
-      if (window.confirm(`Did you complete your "${editBug}"`)) {
-        if (bug.fixed) {
-          setBugs(bugs.filter((t) => t.id !== id));
-        }
-      }
-    }
-  };
-
   const handleFixed = (id: number) => {
     setBugs(
       bugs.map((bug) => (bug.id === id ? { ...bug, fixed: !bug.fixed } : bug))
     );
   };
 
+  const handleDelete = (id: number) => {
+    if (bug.fixed) {
+      if (window.confirm(`Do you want to delete "${editBug}" bug`)) {
+        setBugs(bugs.filter((t) => t.id !== id));
+      }
+    } else {
+      window.alert(`Did you complete your "${editBug}" bug`);
+      if (bug.fixed) {
+        setBugs(bugs.filter((t) => t.id !== id));
+      }
+    }
+  };
+
   const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [edit]);
 
   return (
     <form
-      className="bugItem-container"
+      className="bugs-single-input"
       onSubmit={(e) => handleSubmit(e, bug.id)}
     >
       {edit ? (
         <input
-          className="edit-input"
-          value={editBug.toUpperCase()}
+          className="bugs-single-text"
+          value={editBug}
           onChange={(e) => setEditBug(e.target.value)}
           ref={inputRef}
         />
       ) : bug.fixed ? (
-        <span className="line-through">{bug.description}</span>
+        <span className="line-through">{editBug}</span>
       ) : (
-        <span className="edit-input">{bug.description}</span>
+        <span className="bugs-single-text">{editBug}</span>
       )}
 
       <div className="icons">

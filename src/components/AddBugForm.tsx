@@ -1,5 +1,4 @@
 import { FormEvent, useRef } from "react";
-import { ToastContainer } from "react-toastify";
 
 interface Props {
   bug: string;
@@ -20,36 +19,36 @@ export const AddBugForm = ({
 
   return (
     <>
-      <h2 className="addBug">Form: Add a bug</h2>
       <form
+        className="input"
         onSubmit={(e) => {
           handleAdd(e);
           inputRef.current?.blur();
         }}
-        className="form-container"
       >
-        <div className="desc-container">
-          <label className="label"> Description </label>
+        <div className="inputbox">
           <input
             type="text"
-            placeholder="enter bug description"
+            placeholder="Enter description..."
             value={bug}
             ref={inputRef}
             onChange={(e) => setBug(e.target.value)}
-            id="description"
+            className="input_container"
           />
-          <button className="btnSave">Save</button>
-          <ToastContainer />
+          <button className="saveBtn" type="submit">
+            Save
+          </button>
         </div>
-        <input
-          className="check"
-          type="checkbox"
-          checked={active}
-          onChange={handleCheck}
-        />
-        <label className="fixedCheck" style={{ marginLeft: "10px" }}>
-          Fixed
-        </label>
+
+        <div className="checkbox">
+          <input
+            className="check"
+            type="checkbox"
+            checked={active}
+            onChange={handleCheck}
+          />
+          <label className="fixedCheck">Is Bug Fixed?</label>
+        </div>
       </form>
     </>
   );
