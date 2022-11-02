@@ -63,11 +63,14 @@
   font-size: 25px;
 }
 
-.bug-msg {
+.no-bugs {
   font-size: 25px;
   background-color: yellow;
   padding: 20px 10px;
   border-radius: 5px;
+  width: 29.5%;
+  text-align: center;
+  color: rgb(52, 44, 108);
 }
 
 .bugsList {

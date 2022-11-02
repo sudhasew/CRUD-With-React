@@ -1,4 +1,4 @@
-import Bug from "../services/Bug";
+import Bug from "../models/Bug";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

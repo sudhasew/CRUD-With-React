@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import Bug from "../services/Bug";
+import Bug from "../models/Bug";
 import { AddBugForm } from "./AddBugForm";
 import BugItem from "./BugItem";
 
@@ -8,7 +8,7 @@ export function BugList() {
   const [bug, setBug] = useState<string>("");
   const [bugs, setBugs] = useState<Bug[]>([]);
   const [active, setActive] = useState(false);
-
+  const [editBug] = useState<string>("");
   function handleAdd(e: React.FormEvent) {
     e.preventDefault();
 
@@ -49,14 +49,20 @@ export function BugList() {
         handleCheck={handleCheck}
       />
       <div className="bugsList">
-        {bugs.map((bug) => (
-          <BugItem
-            bug={bug}
-            key={bug.id}
-            bugs={bugs}
-            setBugs={setBugs}
-          ></BugItem>
-        ))}
+        {bugs.length > 0 ? (
+          bugs.map((bug) => {
+            return (
+              <BugItem
+                bug={bug}
+                key={bug.id}
+                bugs={bugs}
+                setBugs={setBugs}
+              ></BugItem>
+            );
+          })
+        ) : (
+          <p className="no-bugs">No Bugs Yet...</p>
+        )}
       </div>
     </>
   );
